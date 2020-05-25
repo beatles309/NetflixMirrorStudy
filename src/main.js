@@ -6,6 +6,12 @@ import router from './router'
 
 Vue.config.productionTip = false
 
+// bootstrap & jquery
+import 'bootstrap/dist/js/bootstrap.js'
+import 'bootstrap/dist/css/bootstrap.css'
+
+import 'jquery/dist/jqeury.js'
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

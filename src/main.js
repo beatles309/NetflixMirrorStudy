@@ -7,12 +7,10 @@ import router from './router'
 Vue.config.productionTip = false
 
 // bootstrap & jquery
-/* eslint-disable */
 import 'bootstrap/dist/js/bootstrap.js'
 import 'bootstrap/dist/css/bootstrap.css'
 
-import 'jquery/dist/jquery.js'
-import 'popper.js/dist/popper.js'
+import 'jquery/dist/jqeury.js'
 
 /* eslint-disable no-new */
 new Vue({

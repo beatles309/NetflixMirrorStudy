@@ -1,6 +1,5 @@
 <template>
-<div>
-  <nav class="navbar navbar-default navbar-fixed-top">
+  <!-- <nav class="navbar navbar-default navbar-fixed-top">
         <div class="container">
           <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -35,20 +34,31 @@
               <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
             </ul>
           </div><!--/.nav-collapse -->
-        </div>
-      </nav>
-    </div>
-      <!-- <div>
+        <!-- </div>
+      </nav> -->
+      <div>
           <h1>Netflix</h1>
-          <li>Home</li>
-          <li>TV 프로그램</li>
-          <li>최신 등록 컨텐츠</li>
-          <li>내가 찜한 컨텐츠</li>
-      </div> -->
+          <li
+            v-for="(nav, index) in navigationList"
+            :key="index" >
+            {{ nav }}
+          </li>
+      </div>
 </template>
 
 <script>
+import { mapActions, mapState } from 'vuex'
 export default {
-  name: 'Header'
+  name: 'Header',
+  computed: {
+    ...mapState({
+      navigationList: state => state.app.navigationList
+    })
+  },
+  methods: {
+    ...mapActions([
+
+    ])
+  }
 }
 </script>

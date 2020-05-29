@@ -1,15 +1,17 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Index from '@/views/Index'
+import Home from '@/views/Home'
+import { PATHS } from '@/constants'
 
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
     {
-      path: '/',
-      name: 'Index',
-      component: Index
+      path: PATHS.HOME,
+      name: 'Home',
+      component: Home
     }
   ]
 })

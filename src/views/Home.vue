@@ -1,13 +1,19 @@
 <template>
-<div>
-  <h1>Index page</h1>
+<div id="index">
+  <h1>Index Page</h1>
+  <DefaultView type='viewing' class="mb-5"/>
+  <DefaultView type='star'/>
 </div>
 </template>
 
 <script>
+import DefaultView from '../components/MediaView/DefaultView'
 
 export default {
-  name: 'Index.vue'
+  name: 'Index.vue',
+  components: {
+    DefaultView
+  }
 }
 </script>
 

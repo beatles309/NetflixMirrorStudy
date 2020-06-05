@@ -3,7 +3,7 @@
   <h4 class="mb-4">{{ message }}</h4>
   <div class="row">
     <div class="carousel slide" data-ride="carousel" data-type="multi" data-interval
-      ="3000" id="medialCarousel">
+      ="false" id="medialCarousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
           <div class="row">

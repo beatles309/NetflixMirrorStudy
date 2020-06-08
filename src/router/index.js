@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/views/Home'
+import Index from '@/views/Index'
 import { PATHS } from '@/constants'
 
 Vue.use(Router)
@@ -9,9 +9,9 @@ export default new Router({
   mode: 'history',
   routes: [
     {
-      path: PATHS.HOME,
-      name: 'Home',
-      component: Home
+      path: PATHS.INDEX,
+      name: 'Index',
+      component: Index
     }
   ]
 })

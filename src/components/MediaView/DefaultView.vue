@@ -1,29 +1,14 @@
 <template>
 <div class="ml-5 mr-5 mt-4">
-  <div class="h4 mb-4">{{ message }}Hello Test``</div>
+  <div class="h4 mb-4">{{ message }}</div>
   <div class="row">
     <div class="carousel slide" data-ride="carousel" data-type="multi" data-interval
       ="false" id="medialCarousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
           <div class="row">
-            <div class="col-md-2">
-              <img src="static/images/test_image.jpeg" alt="Netflix Content" class="img-fluid"/>
-            </div>
-            <div class="col-md-2">
-              <img src="static/images/test_image.jpeg" alt="Netflix Content" class="img-fluid"/>
-            </div>
-            <div class="col-md-2">
-              <img src="static/images/test_image.jpeg" alt="Netflix Content" class="img-fluid"/>
-            </div>
-            <div class="col-md-2">
-              <img src="static/images/test_image.jpeg" alt="Netflix Content" class="img-fluid"/>
-            </div>
-            <div class="col-md-2">
-              <img src="static/images/test_image.jpeg" alt="Netflix Content" class="img-fluid"/>
-            </div>
-            <div class="col-md-2">
-              <img src="static/images/test_image.jpeg" alt="Netflix Content" class="img-fluid"/>
+            <div class="col-md-2" v-for="( src, idx ) in imageList" v-bind:key="idx">
+              <img v-bind:src="src" alt="Netflix Content" class="img-fluid"/>
             </div>
           </div>
         </div>
@@ -58,6 +43,8 @@
 </template>
 
 <script>
+import { movieDB, IMG_URL } from '@/common/api/moviedb'
+
 export default {
   name: 'DefaultView',
   props: {
@@ -70,7 +57,8 @@ export default {
       msg: {
         'viewing': ' 님이 시청 중인 콘텐츠',
         'star': '내가 찜한 콘텐츠'
-      }
+      },
+      imageList: []
     }
   },
   computed: {
@@ -82,6 +70,27 @@ export default {
         return this.msg[this.type]
       }
     }
+  },
+  created () {
+    // API TEST 용
+    movieDB.getMovieGenreList('ko-KR')
+      .then(json => {
+        console.log(json.data)
+      })
+      .catch(error => {
+        console.log(error)
+      })
+
+    movieDB.getMovieTopRated('ko-KR', '1')
+      .then(json => {
+        /* eslint-disable */
+        this.imageList = json.data.results.map(value => {
+          return IMG_URL + value.poster_path
+        })
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 }
 </script>

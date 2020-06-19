@@ -2,53 +2,24 @@
 <div class="ml-5 mr-5 mt-4">
   <div class="h4 mb-4">{{ message }}</div>
   <div class="row">
-    <div class="carousel slide" data-ride="carousel" data-type="multi" data-interval
-      ="false" id="medialCarousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="row">
-            <div class="col-md-2" v-for="( src, idx ) in imageList" v-bind:key="idx">
-              <img v-bind:src="src" alt="Netflix Content" class="img-fluid"/>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item">
-          <div class="row">
-            <div class="col-md-2">
-              <img src="static/images/test_image.jpeg" alt="Netflix Content" class="img-fluid"/>
-            </div>
-            <div class="col-md-2">
-              <img src="static/images/test_image.jpeg" alt="Netflix Content" class="img-fluid"/>
-            </div>
-            <div class="col-md-2">
-              <img src="static/images/test_image.jpeg" alt="Netflix Content" class="img-fluid"/>
-            </div>
-            <div class="col-md-2">
-              <img src="static/images/test_image.jpeg" alt="Netflix Content" class="img-fluid"/>
-            </div>
-            <div class="col-md-2">
-              <img src="static/images/test_image.jpeg" alt="Netflix Content" class="img-fluid"/>
-            </div>
-            <div class="col-md-2">
-              <img src="static/images/test_image.jpeg" alt="Netflix Content" class="img-fluid"/>
-            </div>
-          </div>
-        </div>
-      </div>
-      <a class="left carousel-control-prev" href="#medialCarousel" data-slide="prev"><i class="carousel-control-prev-icon"></i></a>
-      <a class="right carousel-control-next" href="#medialCarousel" data-slide="next"><i class="carousel-control-next-icon"></i></a>
-    </div>
+    <tiny-slider v-if="isList" :mouse-drag="true" :loop="true" items="6" gutter="20" :nav="false" :arrowKeys="true" :controls="false">
+      <img v-for="(src, idx) in imageList" :key="idx" :src="src" class="slide-item"/>
+    </tiny-slider>
   </div>
 </div>
 </template>
 
 <script>
 import { movieDB, IMG_URL } from '@/common/api/moviedb'
+import VueTinySlider from 'vue-tiny-slider'
 
 export default {
   name: 'DefaultView',
   props: {
     type: String
+  },
+  components: {
+    'tiny-slider': VueTinySlider
   },
   data () {
     return {
@@ -69,33 +40,35 @@ export default {
       } else {
         return this.msg[this.type]
       }
+    },
+    isList () {
+      return this.imageList.length !== 0
     }
   },
-  created () {
-    // API TEST 용
-    movieDB.getMovieGenreList('ko-KR')
-      .then(json => {
-        console.log(json.data)
-      })
-      .catch(error => {
-        console.log(error)
-      })
-
-    movieDB.getMovieTopRated('ko-KR', '1')
-      .then(json => {
-        /* eslint-disable */
-        this.imageList = json.data.results.map(value => {
-          return IMG_URL + value.poster_path
+  methods: {
+    getMovieTopRated () {
+      movieDB.getMovieTopRated('ko-KR', '1')
+        .then(json => {
+          this.imageList = json.data.results.map(value => {
+            return IMG_URL + value.poster_path
+          })
         })
-      })
-      .catch(error => {
-        console.log(error)
-      })
+        .catch(error => {
+          console.log(error)
+        })
+    }
+  },
+  mounted () {
+    // API TEST 용
+    this.getMovieTopRated()
   }
 }
 </script>
 
 <style scoped>
+  .slide-item {
+    max-width: 100%;
+  }
   /* 이미지 위에 올리면 키우는 거. 아직 완벽하지 않아서 적용하지 않음.*/
   .media-view {
     position:relative;

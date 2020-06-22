@@ -14,5 +14,9 @@ class MovieDB {
   getMovieTopRated(language, page) {
     return axios.get(`${API_URL}/3/movie/top_rated?api_key=${API_KEY}&language=${ language }&page=${ page }`)
   }
+
+  getMovieDetail(language, movieID) {
+    return axios.get(`${ API_URL }/movie/${ movieID }?api_key=${ API_KEY}&language=${ language }`)
+  }
 }
 export const movieDB = new MovieDB()

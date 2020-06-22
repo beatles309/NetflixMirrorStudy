@@ -1,5 +1,7 @@
 <template>
-  <div id="app">
+  <div
+    id="app"
+    style="background-color: #111111">
     <div id="header" class="d-flex">
       <main-header />
     </div>

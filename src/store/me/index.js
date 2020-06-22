@@ -5,7 +5,10 @@ import getter from './getter'
 export default {
   namespaced: true,
   state: {
-    
+    userId: '',
+    userName: '',
+    lang: '',
+    viewingClass: ''
   },
   action,
   mutation,

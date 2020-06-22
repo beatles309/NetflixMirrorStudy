@@ -5,13 +5,9 @@
 </template>
 
 <script>
-import DefaultView from '../components/MediaView/DefaultView'
 
 export default {
-  name: 'Index.vue',
-  components: {
-    DefaultView
-  }
+  name: 'Latest'
 }
 </script>
 

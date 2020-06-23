@@ -17,7 +17,9 @@
               v-for="(nav, index) in navList"
               :key="index"
               class="nav-item mr-3">
-                <router-link :to="nav.path" class="navbar-link">
+                <router-link
+                  :to="nav.path"
+                  class="navbar-link">
                 {{ nav.label }}
                 </router-link>
             </li>
@@ -61,9 +63,9 @@ import { mapActions, mapState } from 'vuex'
 import { PATHS } from '@/constants'
 
 const NAV_LIST = [
-  { label: '홈', path: PATHS.INDEX },
-  { label: 'TV 프로그램', path: `${PATHS.CONTENT_LIST}/83` },
-  { label: '영화', path: `${PATHS.CONTENT_LIST}/250` },
+  { label: '홈', path: PATHS.HOME },
+  { label: 'TV 프로그램', path: `${PATHS.CONTENT_LIST}83` },
+  { label: '영화', path: `${PATHS.CONTENT_LIST}250` },
   { label: '최신 컨텐츠', path: PATHS.LATEST_CONTENT },
   { label: '내가 찜한 컨텐츠', path: PATHS.MY_LIST }
 ]

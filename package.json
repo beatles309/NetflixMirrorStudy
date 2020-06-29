@@ -20,6 +20,8 @@
     "jquery": "^3.5.1",
     "popper.js": "^1.16.1",
     "vue": "^2.5.2",
+    "vue-infinite-loading": "^2.4.5",
+    "vue-infinite-scroll": "^2.0.2",
     "vue-router": "^3.0.1",
     "vue-tiny-slider": "^0.1.39",
     "vuex": "^3.4.0"

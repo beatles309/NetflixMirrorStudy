@@ -3,7 +3,7 @@
     <div id="header" class="d-flex">
       <main-header />
     </div>
-    <router-view />
+    <infinite-loading />
     <div id="footer" class="footer">
       <main-footer />
     </div>
@@ -13,12 +13,14 @@
 <script>
 import MainHeader from '@/components/common/Header'
 import MainFooter from '@/components/common/Footer'
+import InfiniteLoading from '@/views/infiniteScrollTest'
 
 export default {
   name: 'App',
   components: {
     MainHeader,
-    MainFooter
+    MainFooter,
+    InfiniteLoading
   }
 }
 </script>

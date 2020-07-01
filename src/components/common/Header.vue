@@ -11,14 +11,14 @@
       </div>
       <div class="col-md-8">
         <ul class="nav navbar-nav list-inline">
-            <li 
+            <li
               v-for="(nav, index) in navList"
-              :key="index" 
+              :key="index"
               class="nav-item mr-3">
                 <router-link :to="nav.path" class="navbar-link">
                 {{ nav.label }}
                 </router-link>
-              
+
             </li>
           </ul>
       </div>
@@ -28,7 +28,7 @@
             <li class="navbar-link mr-3"><img src="../../assets/gift.png" /></li>
             <li class="navbar-link mr-3"><img src="../../assets/noti.png" /></li>
             <li class="navbar-link mr-3"><img src="../../assets/picture.jpg"></li>
-            <!-- <li 
+            <!-- <li
               v-for="(nav, index) in navigationList"
               :key="index">
               <img src="../../assets/gift.png" />

@@ -13,7 +13,7 @@ const axiosInstance = axios.create({
 
 const call = (axiosInstance, methodType) => (url, ...params) => {
     const config = params.pop()
-    return axiosInstance[methodType](url, params, config)
+    return axiosInstance[methodType](url, params, config)   
 }
 
 const partGet = call(axiosInstance, HTTP_METHODS.GET)

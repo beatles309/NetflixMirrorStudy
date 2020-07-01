@@ -18,6 +18,7 @@
                 <router-link :to="nav.path" class="navbar-link">
                 {{ nav.label }}
                 </router-link>
+
             </li>
           </ul>
       </div>

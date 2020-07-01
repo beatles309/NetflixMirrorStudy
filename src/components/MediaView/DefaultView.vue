@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { movieDB, IMG_URL } from '@/common/api/moviedb'
+import { IMG_URL, getMovieTopRated } from '@/common/api/moviedb'
 import VueTinySlider from 'vue-tiny-slider'
 
 export default {
@@ -45,22 +45,17 @@ export default {
       return this.imageList.length !== 0
     }
   },
-  methods: {
-    getMovieTopRated () {
-      movieDB.getMovieTopRated('ko-KR', '1')
-        .then(json => {
-          this.imageList = json.data.results.map(value => {
-            return IMG_URL + value.poster_path
-          })
-        })
-        .catch(error => {
-          console.log(error)
-        })
-    }
-  },
-  mounted () {
+  created () {
     // API TEST 용
-    this.getMovieTopRated()
+    getMovieTopRated('ko-KR', '1')
+      .then(json => {
+        this.imageList = json.data.results.map(value => {
+          return IMG_URL + value.poster_path
+        })
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 }
 </script>

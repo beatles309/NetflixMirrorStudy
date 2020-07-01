@@ -7,7 +7,7 @@ const HTTP_METHODS = {
 }
 
 const axiosInstance = axios.create({
-    baseUrl: '',
+    baseURL: 'https://api.themoviedb.org',
     timeout: 4000
 })
 
